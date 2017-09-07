@@ -14,7 +14,7 @@ public class Application {
 
 	public static void main(String[] args) {
 		//###############指定环境和端口启动##########
-		setEvnAndPort("test","8012");
+		setEvnAndPort("dev","8012");
 		SpringApplication.run(Application.class, args);
 	}
 
