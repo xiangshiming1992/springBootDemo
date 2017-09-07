@@ -1,5 +1,0 @@
-数据返回结果集
-
-class BaseResult
-参数：resultCode resultMessage
-Enum

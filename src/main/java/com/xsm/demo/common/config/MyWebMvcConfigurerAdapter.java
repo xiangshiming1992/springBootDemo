@@ -92,6 +92,5 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
         converters.add(fastConverter);
         super.configureMessageConverters(converters);
     }
-
 }
 
