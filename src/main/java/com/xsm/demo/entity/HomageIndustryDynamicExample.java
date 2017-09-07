@@ -1,7 +1,6 @@
 package com.xsm.demo.entity;
 
 import com.xsm.demo.common.mybatis.model.ModelExample;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

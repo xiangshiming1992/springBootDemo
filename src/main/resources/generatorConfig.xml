@@ -38,7 +38,8 @@
     </javaClientGenerator>
 
     <!--<table tableName="homage_banner" domainObjectName="HomageBanner"></table>-->
-    <table tableName="homage_industry_dynamic" domainObjectName="HomageIndustryDynamic"></table>
+    <!--<table tableName="homage_industry_dynamic" domainObjectName="HomageIndustryDynamic"></table>-->
+    <table tableName="homage_genealogy" domainObjectName="HomageGenealogy"></table>
 
   </context>
 </generatorConfiguration>
