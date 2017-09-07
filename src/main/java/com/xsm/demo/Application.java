@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.Environment;
 
 @SpringBootApplication
-@MapperScan(basePackages="com.spring.boot.dao")
+@MapperScan(basePackages="com.xsm.demo.dao")
 public class Application {
 	@Autowired
 	private Environment env;
