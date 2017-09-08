@@ -14,9 +14,10 @@
            <property name="suppressDate" value="true" />
     </commentGenerator>
 
+    <!-- 数据库连接 -->
     <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-        connectionURL="jdbc:mysql://120.77.156.29:3306/homage?characterEncoding=UTF8"
-        userId="root" password="yunji1282017">
+                    connectionURL="jdbc:mysql://120.77.156.29:3306/homage?useUnicode=true&amp;characterEncoding=UTF8"
+                    userId="root" password="yunji1282017">
     </jdbcConnection>
 
     <!-- model的配置  -->

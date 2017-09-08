@@ -12,7 +12,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
 /**
- * Created by Ranj on 2017/8/1 0001.
+ * swagger2集成
  */
 @Configuration
 public class Swagger2Config {
@@ -25,7 +25,6 @@ public class Swagger2Config {
                 .paths(PathSelectors.any())
                 .build();
     }
-
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Spring Boot中使用Swagger2构建RESTful APIs")

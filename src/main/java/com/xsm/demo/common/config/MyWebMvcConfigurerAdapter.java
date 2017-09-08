@@ -19,8 +19,6 @@ import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * Created by Ranj on 2017/7/13.
- *
  * web MVC 配置类
  */
 @Configuration
@@ -47,12 +45,10 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
     /**
      * 以前要访问一个页面需要先创建个Controller控制类，在写方法跳转到页面
      * 在这里配置后就不需要那么麻烦了，直接访问http://localhost:8080/toLogin就跳转到login.html页面了
-     *
      * @param registry
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        //registry.addViewController("/toLogin").setViewName("login");
         super.addViewControllers(registry);
     }
 
@@ -62,12 +58,6 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        // addPathPatterns 用于添加拦截规则
-        // excludePathPatterns 用户排除拦截
-        /*registry.addInterceptor(new MyInterceptor()).addPathPatterns("*//**")
-                .excludePathPatterns("/toLogin","/login","/user/query",
-                       "/swagger-resources", "/swagger-resources*//**", "/v2/api-docs"
-                );*/
         super.addInterceptors(registry);
     }
 
