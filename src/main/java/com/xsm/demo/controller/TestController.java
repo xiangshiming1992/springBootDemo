@@ -1,18 +1,20 @@
 package com.xsm.demo.controller;
 
 import com.xsm.demo.common.pageHelper.PageHelper;
+import com.xsm.demo.common.result.BaseObjectResult;
 import com.xsm.demo.common.result.BasePageResult;
+import com.xsm.demo.common.result.BaseResult;
+import com.xsm.demo.common.utils.RedisUtil.RedisCacheUtils;
+import com.xsm.demo.common.utils.RedisUtil.RedisTokenUtils;
 import com.xsm.demo.entity.HomageIndustryDynamic;
 import com.xsm.demo.entity.HomageIndustryDynamicExample;
 import com.xsm.demo.service.HomageIndustryDynamicManager;
+import com.xsm.demo.service.model.TokenModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,8 +24,12 @@ import javax.servlet.http.HttpServletResponse;
 public class TestController {
     @Autowired
     HomageIndustryDynamicManager homageIndustryDynamicManager;
-    /*@Autowired
-    RedisTokenManagerImpl redisTokenManagerImpl;*/
+    @Autowired
+    RedisTokenUtils redisTokenManagerImpl;
+    @Autowired
+    RedisCacheUtils redisCacheUtilsManager;
+
+    //###############################数据库分页数据查询#############################
     @ResponseBody
     @RequestMapping(value="/get", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
     public BasePageResult<HomageIndustryDynamic> Testyo(HttpServletRequest req, HttpServletResponse resp,
@@ -37,21 +43,40 @@ public class TestController {
         return result;
     }
 
-   /* @ResponseBody
+    //####################################################redis做用户token校验测试###############################
+    @ResponseBody
     @RequestMapping(value="/setRedis", method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE })
-    public BaseResult setRedis(HttpServletRequest req, HttpServletResponse resp, @RequestParam String userId){
+    public BaseObjectResult<TokenModel> setRedis(HttpServletRequest req, HttpServletResponse resp, @RequestParam String userId){
         BaseObjectResult<TokenModel> result = new BaseObjectResult<TokenModel>("10000","存入成功");
-        TokenModel model = redisTokenManagerImpl.createToken(userId);
+        TokenModel model = redisTokenManagerImpl.createToken(userId,86400);
         result.setResult(model);
         return  result;
     }
 
     @ResponseBody
-    @RequestMapping(value="/getRedis", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
-    public BaseObjectResult<TokenModel> getRedis(HttpServletRequest req, HttpServletResponse resp, @RequestParam String tokenInfo){
-        BaseObjectResult<TokenModel> result = new BaseObjectResult<TokenModel>("10000","读取成功");
-        TokenModel model = redisTokenManagerImpl.getToken(tokenInfo);
-        result.setResult(model);
+    @RequestMapping(value="/checkRedis", method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE })
+    public BaseObjectResult<Boolean> getRedis(HttpServletRequest req, HttpServletResponse resp, @RequestBody TokenModel tokenInfo){
+        BaseObjectResult<Boolean> result = new BaseObjectResult<Boolean>("10000","检查成功");
+        boolean flag = redisTokenManagerImpl.checkToken(tokenInfo);
+        result.setResult(flag);
         return  result;
-    }*/
+    }
+
+    //#########################################################REdis 做数据缓存测试############################################
+    @ResponseBody
+    @RequestMapping(value="/setCache", method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE })
+    public BaseResult setCache(HttpServletRequest req, HttpServletResponse resp, @RequestBody SetCatchTestModel test){
+        BaseResult result = new BaseResult("10000","存入缓存成功");
+        redisCacheUtilsManager.set("110_sp",test,30L);
+        return  result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/readCache", method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE })
+    public BaseObjectResult<SetCatchTestModel> readCache(HttpServletRequest req, HttpServletResponse resp, @RequestParam String key){
+        BaseObjectResult<SetCatchTestModel> result = new BaseObjectResult<SetCatchTestModel>("10000","读取缓存成功");
+        SetCatchTestModel result1 = (SetCatchTestModel) redisCacheUtilsManager.get(key);
+        result.setResult(result1);
+        return  result;
+    }
 }
