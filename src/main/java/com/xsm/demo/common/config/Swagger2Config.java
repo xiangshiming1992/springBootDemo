@@ -18,10 +18,19 @@ import springfox.documentation.spring.web.plugins.Docket;
 public class Swagger2Config {
 	@Bean
     public Docket createRestApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
+        return new Docket(DocumentationType.SWAGGER_2).groupName("测试api")
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.xsm.demo.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.xsm.demo.controller.test"))
+                .paths(PathSelectors.any())
+                .build();
+    }
+    @Bean
+    public Docket demoApi() {
+        return new Docket(DocumentationType.SWAGGER_2).groupName("线上api")//创建多个分组
+                .apiInfo(apiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.xsm.demo.controller.online"))
                 .paths(PathSelectors.any())
                 .build();
     }

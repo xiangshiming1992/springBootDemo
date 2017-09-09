@@ -1,4 +1,4 @@
-package com.xsm.demo.controller;
+package com.xsm.demo.controller.test;
 
 import com.xsm.demo.common.pageHelper.PageHelper;
 import com.xsm.demo.common.result.BaseObjectResult;

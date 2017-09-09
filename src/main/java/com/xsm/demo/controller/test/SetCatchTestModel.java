@@ -1,4 +1,4 @@
-package com.xsm.demo.controller;
+package com.xsm.demo.controller.test;
 
 public class SetCatchTestModel {
     private String name;
