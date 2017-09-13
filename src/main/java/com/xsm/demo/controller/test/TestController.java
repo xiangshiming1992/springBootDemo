@@ -62,7 +62,7 @@ public class TestController {
         return  result;
     }
 
-    //#########################################################REdis 做数据缓存测试############################################
+    //#########################################################Redis 做数据缓存测试############################################
     @ResponseBody
     @RequestMapping(value="/setCache", method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE })
     public BaseResult setCache(HttpServletRequest req, HttpServletResponse resp, @RequestBody SetCatchTestModel test){

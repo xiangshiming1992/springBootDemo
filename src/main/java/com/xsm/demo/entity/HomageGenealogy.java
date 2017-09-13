@@ -387,4 +387,14 @@ public class HomageGenealogy {
     public void setRowUpdateTime(Date rowUpdateTime) {
         this.rowUpdateTime = rowUpdateTime;
     }
+
+    private int abc;
+
+    public int getAbc() {
+        return abc;
+    }
+
+    public void setAbc(int abc) {
+        this.abc = abc;
+    }
 }

@@ -10,8 +10,9 @@
 
     <plugin type="com.xsm.common.mybatis.SimpleGeneratorPlugin" />
 
-    <commentGenerator type="com.xsm.common.mybatis.SimpleCommentGenerator">
-           <property name="suppressDate" value="true" />
+    <commentGenerator
+            type="com.xsm.common.mybatis.SimpleCommentGenerator">
+      <property name="suppressDate" value="true" />
     </commentGenerator>
 
     <!-- 数据库连接 -->
@@ -40,7 +41,8 @@
 
     <!--<table tableName="homage_banner" domainObjectName="HomageBanner"></table>-->
     <!--<table tableName="homage_industry_dynamic" domainObjectName="HomageIndustryDynamic"></table>-->
-    <table tableName="homage_genealogy" domainObjectName="HomageGenealogy"></table>
+    <!--<table tableName="homage_genealogy" domainObjectName="HomageGenealogy"></table>-->
+    <table tableName="homage_log_userlogin" domainObjectName="HomageLogUserlogin"></table>
 
   </context>
 </generatorConfiguration>
