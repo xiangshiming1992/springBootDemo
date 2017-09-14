@@ -8,9 +8,9 @@
 
     <property name="javaFileEncoding" value="UTF8" />
 
-    <plugin type="com.xsm.common.mybatis.SimpleGeneratorPlugin" />
+    <plugin type="com.xsm.demo.common.mybatis.generator.SimpleGeneratorPlugin" />
 
-    <commentGenerator type="com.xsm.common.mybatis.SimpleCommentGenerator">
+    <commentGenerator type="com.xsm.demo.common.mybatis.generator.SimpleCommentGenerator">
       <property name="suppressDate" value="true" />
     </commentGenerator>
 
@@ -19,33 +19,32 @@
                     connectionURL="jdbc:mysql://120.77.156.29:3306/homage?useUnicode=true&amp;characterEncoding=UTF8&amp;autoReconnect=true"
                     userId="root" password="yunji1282017">
     </jdbcConnection>
-
     <!-- model的配置  -->
-    <javaModelGenerator targetPackage="com.xsm.demo.entity" targetProject="src\main\java">
+    <javaModelGenerator targetPackage="com.xsm.demo.entity" targetProject="springBootDemo\src\main\java">
       <property name="enableSubPackages" value="true" />
       <property name="trimStrings" value="true"/>
       <property name="exampleRootClass" value="com.xsm.demo.common.mybatis.model.ModelExample" />
     </javaModelGenerator>
 
     <!--mybatis的xml的配置  -->
-    <sqlMapGenerator targetPackage="mybatis.mapper" targetProject="src\main\resources">
+    <sqlMapGenerator targetPackage="mybatis.mapper" targetProject="springBootDemo\src\main\resources">
       <property name="enableSubPackages" value="true" />
     </sqlMapGenerator>
 
     <!--mapper的配置  -->
-    <javaClientGenerator type="XMLMAPPER" targetPackage="com.xsm.demo.dao" targetProject="src\main\java">
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.xsm.demo.dao" targetProject="springBootDemo\src\main\java">
       <property name="enableSubPackages" value="true" />
       <property name="clientRootInterface" value="com.xsm.demo.common.mybatis.mapper.Mapper" />
     </javaClientGenerator>
 
-    <table tableName="homage_banner" domainObjectName="HomageBanner"></table>
+    <!--<table tableName="homage_banner" domainObjectName="HomageBanner"></table>-->
     <!--<table tableName="homage_industry_dynamic" domainObjectName="HomageIndustryDynamic"></table>-->
     <!--<table tableName="homage_genealogy" domainObjectName="HomageGenealogy"></table>-->
    <!-- <table tableName="homage_log_userlogin" domainObjectName="HomageLogUserlogin"></table>-->
     <!--<table tableName="test_SysPermission" domainObjectName="TestSysPermission"></table>-->
     <!--<table tableName="test_SysRole" domainObjectName="TestSysRole"></table>-->
-   <!-- <table tableName="test_SysRolePermission" domainObjectName="TestSysRolePermission"></table>-->
-    <!--<table tableName="test_SysUserRole" domainObjectName="TestSysUserRole"></table>-->
-   <!-- <table tableName="test_UserInfo" domainObjectName="TestUserInfo"></table>-->
+    <!-- <table tableName="test_SysRolePermission" domainObjectName="TestSysRolePermission"></table> -->
+    <!-- <table tableName="test_SysUserRole" domainObjectName="TestSysUserRole"></table> -->
+    <table tableName="test_UserInfo" domainObjectName="TestUserInfo"></table>
   </context>
 </generatorConfiguration>
