@@ -16,8 +16,8 @@
 
     <!-- 数据库连接 -->
     <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                    connectionURL="jdbc:mysql://120.77.156.29:3306/homage?useUnicode=true&amp;characterEncoding=UTF8&amp;autoReconnect=true"
-                    userId="root" password="yunji1282017">
+                    connectionURL="jdbc:mysql://111.111.111.111:3306/homage?useUnicode=true&amp;characterEncoding=UTF8&amp;autoReconnect=true"
+                    userId="root" password="222222">
     </jdbcConnection>
 
     <!-- model的配置  -->
